@@ -1,4 +1,5 @@
 import speech_recognition
+import playsound
 
 
 sr = speech_recognition.Recognizer()
@@ -6,7 +7,7 @@ sr.pause_threshold = 0.5
 
 def greeting():
 
-    return 'Привет, Господин!'
+    return 'Я тебе ахуенно сделаю'
 
 def task():
     print('Что записать, хозяин?')
@@ -28,12 +29,12 @@ with speech_recognition.Microphone() as mic:
     audio = sr.listen(source=mic)
     query = sr.recognize_google(audio_data=audio, language='ru-RU').lower()
 
-if query == 'в махачкалу ебанём':
+if query == 'ахуенно сделай':
     print(greeting())
 elif query == 'добавь задачу':
     print(task())
-elif query == 'серёга петух':
-    print('согласен, еще и пидорас))')
+elif query == 'привет':
+    playsound("che.mp3")
 else:
     print('Пошел на хуй')
 
