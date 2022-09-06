@@ -4,7 +4,7 @@ import playsound
 import os
 import webbrowser
 import winsound
-import pyttsx3
+
 
 
 sr = speech_recognition.Recognizer()
@@ -15,8 +15,9 @@ command = {
         'greeting': ['ахунно сделай', 'ахуено сделай', 'ахуенно', 'сделай'],
         'task': ['добавь задачу', 'добавь'],
         'che': ['привет', 'прив'],
-        'song': ['включи музыку', 'музыку', 'уёбак'],
-        'ninja': ['ниндзя', 'нинзя']
+        'song': ['включи музыку', 'музыку', 'уёбак', 'включи'],
+        'ninja': ['ниндзя', 'нинзя'],
+        'vk': ['открой вк', 'вк']
 
     }
 }
@@ -41,9 +42,10 @@ def song():
     # os.startfile('kizaru.mp3')
     # playsound.playsound('kizaru.mp3', True)
     files = os.listdir('music')
-
     return playsound.playsound(f'music/{random.choice(files)}', True)
 
+def vk():
+    webbrowser.get(using='google-chrome').open('https://vk.com')
 
 
 def che():
@@ -69,7 +71,6 @@ def task():
 
 def main():
     query = listen_command()
-
 
     for k, v in command['commands'].items():
         if query in v:
